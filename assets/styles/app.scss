@@ -3,7 +3,9 @@
 @import 'utils/variables';
 @import 'utils/mixins';
 
+@import 'components/button';
 @import 'components/preloader';
+@import 'components/project';
 @import 'components/section';
 @import 'components/typo';
 
@@ -25,75 +27,8 @@ main {
     transition: all .5s ease-in-out;
 }
 
-.btn {
-    padding: 1.25rem 2.25rem;
-    border: 1px solid $color1;
-    color: $color1;
-    text-decoration: none;
-    margin-top: 1.25rem;
-    display: inline-block;
-    position: relative;
-
-    transition: all .2s ease-in-out;
-
-    &:before {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 100%;
-        content: '';
-        background: $color1;
-        width: 0;
-        z-index: -1;
-
-        transition: all .2s ease-in-out;
-    }
-
-    &:hover, &:focus {
-        color: $color4;
-        &:before {
-            width: 100%;
-        }
-    }
-}
-
 a {
     color: $color2;
     text-decoration: none;
 }
 
-.project-card {
-    background: #101010;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12);
-    padding: 2.5rem 2.5rem 2rem;
-
-    transition: all .3s ease-in-out;
-
-    margin-bottom: 3rem;
-
-    h3 {
-        color: $color1;
-    }
-
-    ul {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        padding: 0;
-
-        li {
-            @include mono;
-            margin: 0 2rem .5rem 0;
-            font-size: 1.6rem;
-        }
-    }
-
-    &:hover {
-        box-shadow: 0 2px 4px -1px rgba(228, 98, 23,0.2),0 4px 5px 0 rgba(228, 98, 23,0.14),0 1px 10px 0 rgba(228, 98, 23,0.12);
-        //box-shadow: rgb(228, 98, 23) 0px 20px 30px -10px;
-        margin-top: -2px;
-        margin-bottom: calc(3rem + 2px);
-    }
-}
