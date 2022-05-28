@@ -1,0 +1,21 @@
+<footer class="footer">
+    <ul>
+        {% for social_network in get_social_networks() %}
+            <li>
+                <a href="{{ social_network.url }}" title="{{ social_network.title ?: social_network.name }}" aria-label="{{ social_network.name }}" rel="noopener noreferrer" target="_blank">
+                    <i class="{{ social_network.classIcon }}" role="img"></i>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>
+        <a href="#" class="signature">
+            Site développé avec <span class="heart">♥&#xFE0E;</span> tout seul comme un grand.
+        </a>
+    </p>
+
+    <p>
+        &copy; {{ ''|date('Y') }} - Florian Neveu
+    </p>
+</footer>

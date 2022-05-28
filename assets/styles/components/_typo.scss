@@ -1,3 +1,12 @@
+a {
+    color: $color2;
+    text-decoration: none;
+}
+
+i {
+    font-style: normal;
+}
+
 .cursive {
     @include cursive;
 }
@@ -11,3 +20,4 @@
     font-size: 3rem;
     line-height: 3.5rem;
 }
+

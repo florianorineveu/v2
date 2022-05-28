@@ -1,0 +1,67 @@
+footer.footer {
+    padding: 0 2.5rem 2.5rem;
+
+    @include mono;
+    font-size: 1.4rem;
+    text-align: center;
+
+    a {
+        color: $color3;
+        transition: color .2s ease-in-out;
+
+        &:hover, &:focus {
+            color: $color2;
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2.5rem;
+        list-style: none;
+
+        li {
+            a {
+                padding: .5rem 1rem;
+
+                font-size: 2rem;
+                line-height: 2rem;
+            }
+        }
+    }
+
+    .signature {
+        &:hover, &:focus {
+            .heart {
+                color: red;
+                animation: animateHeart 1.2s infinite;
+            }
+        }
+    }
+
+    .heart {
+        display: inline-block;
+    }
+}
+
+@keyframes animateHeart {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1.2);
+    }
+    10% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.4);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

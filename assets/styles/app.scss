@@ -1,9 +1,11 @@
 @import 'normalize.css';
+@import '@fortawesome/fontawesome-free/scss/brands';
 
 @import 'utils/variables';
 @import 'utils/mixins';
 
 @import 'components/button';
+@import 'components/footer';
 @import 'components/preloader';
 @import 'components/project';
 @import 'components/section';
@@ -13,6 +15,8 @@
 
 html {
     font-size: 62.5%;
+    scrollbar-color: $color1 transparent;
+    scrollbar-width: thin;
 }
 
 body {
@@ -26,9 +30,3 @@ body {
 main {
     transition: all .5s ease-in-out;
 }
-
-a {
-    color: $color2;
-    text-decoration: none;
-}
-
