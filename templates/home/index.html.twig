@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <section class="section home-header">
+        <div>
+            <h1 class="h1-like">
+                <span class="monospace">Hello world,</span>
+                <strong>Florian <span class="cursive">"Ori"</span> Neveu</strong>,
+                <br>
+                et je fais des trucs sur le Web.
+            </h1>
+
+            <p>
+                Je suis un développeur PHP spécialisé dans Symfony. Actuellement, j'occupe le poste de Développeur
+                back-end senior chez <a href="https://www.adveris.fr">Adveris</a>.
+            </p>
+
+            <a href="{{ path('app_about') }}" class="btn">
+                En savoir plus
+            </a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="h2-like">Qui suis-je</h2>
+    </section>
+
+    <section class="section">
+        <h2 class="h2-like">Projets</h2>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam delectus deleniti dignissimos ea fugiat fugit impedit ipsum iusto, laudantium nihil quo quos, repellendus rerum tempora ut voluptate voluptatem voluptatibus?
+        </p>
+
+        <article class="project-card">
+            <h3>Ow-API-PHP</h3>
+            <p>A light PHP wrapper for Ow-API, an unofficial API for <a href="#">Overwatch</a>.</p>
+            <ul>
+                <li>PHP</li>
+                <li>Composer</li>
+                <li>API</li>
+                <li>Overwatch</li>
+            </ul>
+        </article>
+
+        <article class="project-card">
+            <h3>dotfiles</h3>
+            <p>Some experiments about dotfiles in order to be more efficient when configuring new environments.</p>
+            <ul>
+                <li>Shell</li>
+                <li>zsh</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="section">
+        <h2 class="h2-like">Blog</h2>
+    </section>
+{% endblock %}

@@ -1,0 +1,13 @@
+.cursive {
+    @include cursive;
+}
+
+.monospace {
+    @include mono;
+}
+
+.h1-like {
+    color: $color2;
+    font-size: 3rem;
+    line-height: 3.5rem;
+}

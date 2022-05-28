@@ -1,0 +1,42 @@
+.home-header {
+    min-height: 100vh;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+/*    &:before {
+        @include mono;
+        content: '<?php';
+        position: absolute;
+        color: $color2;
+        font-size: 1.2rem;
+        top: 0;
+    }*/
+
+    h1 {
+        .monospace {
+            display: block;
+
+            margin-bottom: .67em;
+
+            color: $color3;
+            font-size: 1.8rem;
+        }
+
+        strong {
+            color: $color1;
+
+            &:after {
+                @include mono;
+                content: 'extends AbstractDeveloper';
+                position: absolute;
+                color: $color2;
+                font-size: 1.2rem;
+                right: .5rem;
+                margin-top: -2rem;
+            }
+        }
+    }
+}

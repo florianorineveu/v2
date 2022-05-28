@@ -1,0 +1,26 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background: $color4;
+    display: none;
+
+    > div {
+        position: absolute;
+        background: red;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 400px;
+        height: 160px;
+        text-align: center;
+    }
+}
