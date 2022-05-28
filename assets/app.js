@@ -12,11 +12,15 @@ import $ from 'jquery';
 
 $('body').on('click', 'a', function (e) {
     e.preventDefault();
-
-    const target = $(this).attr('href');
+    const $this  = $(this);
+    const target = $this.attr('href');
 
     if (target.charAt(0) !== '/') {
-        location.href = target;
+        if ($this.attr('target') === '_blank') {
+            window.open(target, '_blank');
+        } else {
+            location.href = target;
+        }
 
         return true;
     }
