@@ -1,11 +1,32 @@
 header.header {
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+
+    height: 37px;
     padding: 1rem 1.5rem;
 
+    transition: background .3s ease-in-out, box-shadow .3s ease-in-out, top .3s ease-in-out;
+
     text-align: right;
+
+    &.scrolling {
+        position: fixed;
+        top: -57px;
+
+        &.scrollingTop {
+            top: 0;
+
+            background: rgba(12,12,12,0.9);
+            box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12);
+        }
+    }
 
     .nav-toggler {
         width: 2.7rem;
         display: inline-block;
+        z-index: 20;
 
         &:before, &:after, span {
             background: $color1;
@@ -15,6 +36,10 @@ header.header {
             border-radius: 3px;
             margin: 7px 0;
             transition: .5s;
+        }
+
+        &:after {
+            margin-bottom: 0;
         }
 
         &.open {

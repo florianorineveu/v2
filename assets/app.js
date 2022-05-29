@@ -7,7 +7,6 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
-
 import $ from 'jquery';
 
 $(function() {
@@ -31,14 +30,29 @@ $(function() {
     $('.js-mailto').attr('href', 'mailto:' + to);
 });
 
-$(window).on('scroll', function() {
-    const $this = $(this);
+let lastScrollTop  = 0;
 
-    if ($this.scrollTop() > 75 * $this.height() / 100) {
-        $('.js-scrollToTop').css('opacity', 1);
-    } else if ($this.scrollTop() < $this.height() / 2) {
-        $('.js-scrollToTop').css('opacity', 0);
+$(window).on('scroll', function() {
+    const $this        = $(this);
+    const $header      = $('header.header');
+    const $scrollToTop = $('.js-scrollToTop');
+    const scrollTop    = $this.scrollTop();
+
+    if (scrollTop > 75 * $this.height() / 100) {
+        $scrollToTop.css('opacity', 1);
+    } else if (scrollTop < $this.height() / 2) {
+        $scrollToTop.css('opacity', 0);
     }
+
+    if (scrollTop > $header.height()) {
+        $header.addClass('scrolling')
+
+        scrollTop < lastScrollTop ? $header.addClass('scrollingTop') : $header.removeClass('scrollingTop');
+    } else if (scrollTop === 0) {
+        $header.removeClass('scrolling scrollingTop');
+    }
+
+    lastScrollTop = scrollTop;
 });
 
 $(document).on('click', 'a', function (e) {
