@@ -16,6 +16,7 @@ $(function() {
         e.preventDefault();
 
         $('html, body').animate({scrollTop: 0}, 700)
+        $(this).blur();
     });
 
     let to = 'hello@fnev.eu';
