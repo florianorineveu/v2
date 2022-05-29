@@ -15,19 +15,46 @@ $(function() {
         e.preventDefault();
 
         $('html, body').animate({scrollTop: 0}, 700)
-        $(this).blur();
+        $(e.currentTarget).blur();
     });
-
-    $('.js-nav-toggler').on('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        $(this).toggleClass('open');
-    })
 
     let to = 'hello@fnev.eu';
 
     $('.js-mailto').attr('href', 'mailto:' + to);
+});
+
+$(function() {
+    const $body = $('html body');
+    const $navToggler = $('.js-nav-toggler');
+    const $nav = $('header.header nav');
+
+    $navToggler.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $navToggler.toggleClass('open');
+        $body.toggleClass('blur');
+        $nav.toggleClass('open');
+    })
+
+    $('html').on('click', '.blur', function (e) {
+        const $targetEvent = $(e.target);
+
+        if (
+            $targetEvent[0].tagName === 'A'
+            || !$targetEvent[0].closest('header.header')
+            || ($targetEvent[0].tagName === 'HEADER' && $targetEvent.hasClass('header'))
+        ) {
+            $navToggler.toggleClass('open');
+            $body.toggleClass('blur');
+            $nav.toggleClass('open');
+
+            return;
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+    });
 });
 
 let lastScrollTop  = 0;
@@ -60,8 +87,6 @@ $(document).on('click', 'a', function (e) {
     const $this  = $(this);
     const target = $this.attr('href');
 
-    console.log(target);
-
     if (target.charAt(0) !== '/') {
         if (target.charAt(0) === '#' && target !== '#' && $(target).length >= 1) {
             $('html, body').animate({
@@ -80,16 +105,14 @@ $(document).on('click', 'a', function (e) {
         return true;
     }
 
-    let $ajax = $.ajax({
+    $.ajax({
         method: 'GET',
         url: target,
         beforeSend: function() {
-            //$('.preloader').css('display', 'block');
             $('main').css('opacity', 0);
             window.history.pushState({}, '', target);
         },
         success: function (response) {
-            //console.log(data);
             setTimeout(function() {
                 $(window).scrollTop(0);
                 let title = (/<title>(.*?)<\/title>/m).exec(response)[1];
@@ -101,7 +124,6 @@ $(document).on('click', 'a', function (e) {
 
                 $('#content').html(content.html());
                 $('main').css('opacity', 1);
-                //$('.preloader').css('display', 'none');
             }, 500);
         }
     });
@@ -109,8 +131,6 @@ $(document).on('click', 'a', function (e) {
 
 window.onpopstate = function(event) {
     if (event && event.state) {
-        //if (!event.explicitOriginalTarget || event.explicitOriginalTarget !== window) {
-            location.reload();
-        //}
+        location.reload();
     }
 }

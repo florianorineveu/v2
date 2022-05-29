@@ -6,14 +6,16 @@
     -ms-flex-align: center;
     align-items: center;
 
-/*    &:before {
-        @include mono;
-        content: '<?php';
+    &:before {
         position: absolute;
+        top: 6rem;
+        left: .5rem;
+
+        @include mono;
         color: $color2;
+        content: '<?php';
         font-size: 1.2rem;
-        top: 0;
-    }*/
+    }
 
     h1 {
         .monospace {

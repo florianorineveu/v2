@@ -24,9 +24,11 @@ header.header {
     }
 
     .nav-toggler {
-        width: 2.7rem;
-        display: inline-block;
+        position: relative;
         z-index: 20;
+
+        display: inline-block;
+        width: 2.7rem;
 
         &:before, &:after, span {
             background: $color1;
@@ -54,6 +56,35 @@ header.header {
             span {
                 transform: scale(0);
             }
+        }
+    }
+
+    nav {
+        bottom: 0;
+        position: fixed;
+        right: -100vw;
+        top: 0;
+        z-index: 10;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: min(75vw, 400px);
+
+        background: #101010;
+        box-shadow: none;
+        transition: right .3s ease-in-out, box-shadow .3s ease-in-out;
+
+        &.open {
+            right: 0;
+
+            box-shadow: 2px 0 4px -1px rgba(0,0,0,0.2);
+        }
+
+        ul {
+            padding: 0;
+
+            list-style: none;
         }
     }
 }

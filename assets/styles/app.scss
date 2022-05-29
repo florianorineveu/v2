@@ -27,19 +27,15 @@ body {
     font-size: 1.8rem;
     line-height: 2.5rem;
     @include default;
-
-    &:before {
-        position: absolute;
-        top: 6rem;
-        left: .5rem;
-
-        @include mono;
-        color: $color2;
-        content: '<?php';
-        font-size: 1.2rem;
-    }
 }
 
 main {
     transition: all .5s ease-in-out;
+}
+
+body.blur {
+    overflow: hidden;
+    main, footer.footer {
+        filter: blur(.5rem) brightness(0.5);
+    }
 }
