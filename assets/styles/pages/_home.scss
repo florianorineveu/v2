@@ -29,13 +29,15 @@
             color: $color1;
 
             &:after {
-                @include mono;
-                content: 'extends AbstractDeveloper';
                 position: absolute;
-                color: $color2;
-                font-size: 1.2rem;
                 right: .5rem;
+
                 margin-top: -2rem;
+
+                @include mono;
+                color: $color2;
+                content: 'extends AbstractDeveloper';
+                font-size: 1.2rem;
             }
         }
     }

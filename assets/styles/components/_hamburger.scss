@@ -1,0 +1,34 @@
+header.header {
+    padding: 1rem 1.5rem;
+
+    text-align: right;
+
+    .nav-toggler {
+        width: 2.7rem;
+        display: inline-block;
+
+        &:before, &:after, span {
+            background: $color1;
+            content: '';
+            display: block;
+            height: 3px;
+            border-radius: 3px;
+            margin: 7px 0;
+            transition: .5s;
+        }
+
+        &.open {
+            &:before {
+                transform: translateY(8px) rotate(135deg);
+            }
+
+            &:after {
+                transform: translateY(-12px) rotate(-135deg);
+            }
+
+            span {
+                transform: scale(0);
+            }
+        }
+    }
+}

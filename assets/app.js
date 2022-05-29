@@ -19,6 +19,13 @@ $(function() {
         $(this).blur();
     });
 
+    $('.js-nav-toggler').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(this).toggleClass('open');
+    })
+
     let to = 'hello@fnev.eu';
 
     $('.js-mailto').attr('href', 'mailto:' + to);
@@ -46,6 +53,8 @@ $(document).on('click', 'a', function (e) {
             $('html, body').animate({
                 scrollTop: $(target).offset().top
             }, 700)
+
+            return true;
         }
 
         if ($this.attr('target') === '_blank') {
@@ -60,19 +69,6 @@ $(document).on('click', 'a', function (e) {
     let $ajax = $.ajax({
         method: 'GET',
         url: target,
-        xhr: function() {
-            var xhr = new window.XMLHttpRequest();
-
-            xhr.addEventListener("progress", function(evt){
-                if (evt.lengthComputable) {
-                    var percentComplete = evt.loaded / evt.total;
-                    // Do something with download progress
-                    //console.log(percentComplete);
-                }
-            }, false);
-
-            return xhr;
-        },
         beforeSend: function() {
             //$('.preloader').css('display', 'block');
             $('main').css('opacity', 0);
@@ -82,9 +78,9 @@ $(document).on('click', 'a', function (e) {
             //console.log(data);
             setTimeout(function() {
                 $(window).scrollTop(0);
-                let title=(/<title>(.*?)<\/title>/m).exec(response)[1];
+                let title = (/<title>(.*?)<\/title>/m).exec(response)[1];
 
-                $('head title').text(title);
+                $('head title').html(title);
                 $('meta[name="og:title"]').attr('content', title);
 
                 let content = $($.parseHTML(response)).filter('#content');

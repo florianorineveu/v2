@@ -3,6 +3,10 @@ a {
     text-decoration: none;
 }
 
+#content a {
+    @include hoverLink;
+}
+
 i {
     font-style: normal;
 }
@@ -16,9 +20,30 @@ i {
 }
 
 .h1-like {
+    @include defaultB;
     color: $color2;
     font-size: 3rem;
     line-height: 3.5rem;
+}
+
+.h2-like {
+    align-items: center;
+    display: flex;
+
+    color: $color1;
+    white-space: nowrap;
+
+    &:after {
+        display: block;
+
+        height: 1px;
+        margin-left: 1rem;
+        width: 100%;
+
+        background: $color2;
+
+        content: '';
+    }
 }
 
 .text-center {

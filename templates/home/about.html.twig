@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Qui suis-je{% endblock %}
+{% block title -%}
+    {{ '$ whoami | ' ~ parent() }}
+{%- endblock title %}
 
 {% block body %}
     <section class="section">
