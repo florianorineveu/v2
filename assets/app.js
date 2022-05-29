@@ -48,7 +48,7 @@ $(window).on('scroll', function() {
         $header.addClass('scrolling')
 
         scrollTop < lastScrollTop ? $header.addClass('scrollingTop') : $header.removeClass('scrollingTop');
-    } else if (scrollTop === 0) {
+    } else if (scrollTop <= 1) {
         $header.removeClass('scrolling scrollingTop');
     }
 
