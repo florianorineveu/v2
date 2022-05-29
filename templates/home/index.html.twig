@@ -17,14 +17,29 @@
                 back-end senior chez <a href="https://www.adveris.fr">Adveris</a>.
             </p>
 
-            <a href="{{ path('app_about') }}" class="btn">
+            <a href="#about" class="btn js-more">
                 En savoir plus
             </a>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="h2-like">Qui suis-je</h2>
+    <section class="section" id="about">
+        <h2 class="h2-like">$ whoami</h2>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid animi at consequuntur dolore earum
+            eligendi et, ex harum inventore iusto laborum laudantium magni, pariatur quae reprehenderit unde voluptate
+            voluptatem!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deserunt eligendi et excepturi odio repellendus
+            tenetur ullam! Adipisci at consequuntur dolor doloremque dolores est facilis minus porro quasi, recusandae
+            sequi.
+        </p>
+
+        <a href="{{ path('app_about') }}" class="btn">
+            En savoir plus
+        </a>
     </section>
 
     <section class="section">
@@ -57,5 +72,42 @@
 
     <section class="section">
         <h2 class="h2-like">Blog</h2>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad atque aut autem dicta eius ex facilis, hic iure
+            iusto laudantium magni necessitatibus nemo non officia officiis porro possimus quaerat, recusandae.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>29.04.2022</td>
+                    <td>Joyeux anniversaire moi</td>
+                    <td>Développement</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="section">
+        <h2 class="h2-like">On reste en contact ?</h2>
+        <p>
+            Même si je ne suis pas à l'écoute du marché pour le moment, je reste joignable. N'hésitez donc pas à
+            m'écrire si vous avez des questions ou si vous souhaitez juste me dire bonjour, je ferai de mon mieux pour
+            vous répondre au plus vite ! :)
+        </p>
+
+        <div class="text-center">
+            <a href="#" class="btn js-mailto">
+                Faire coucou !
+            </a>
+        </div>
     </section>
 {% endblock %}

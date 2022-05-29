@@ -10,10 +10,6 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-
         <link rel="stylesheet" href="https://use.typekit.net/qex1spy.css">
     </head>
     <body>
@@ -27,10 +23,18 @@
 
         {{ include('_footer.html.twig') }}
 
-        <div id="preloader" class="preloader">
-            <div>
-                <progress value="70" max="100" aria-label="Chargement du contenu..."></progress>
-            </div>
-        </div>
+        <a
+            href="#"
+            class="js-scrollToTop scrollToTop"
+            aria-label="Remonter en haut de la page"
+            title="Remonter en haut de la page"
+            role="button"
+        >
+            &lt;?
+        </a>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>

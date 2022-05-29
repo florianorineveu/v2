@@ -1,0 +1,25 @@
+.scrollToTop {
+    position: fixed;
+    bottom: 4rem;
+    right: 2rem;
+
+    background: #101010;
+    border-radius: 3px;
+    box-shadow: 2px 0 4px -1px rgba(0,0,0,0.2), 4px 0 5px 0 rgba(0,0,0,0.14), 1px 0 10px 0 rgba(0,0,0,0.12);
+    opacity: 0;
+    rotate: 90deg;
+    transition: opacity .5s ease-in-out, box-shadow .2s ease-in-out, bottom .2s ease-in-out;
+
+    @include defaultB;
+    color: $color1;
+    font-size: 2rem;
+    line-height: 4rem;
+    height: 4rem;
+    width: 4rem;
+    text-align: center;
+
+    &:hover, &:focus {
+        box-shadow: 2px 0 4px -1px rgba(228, 98, 23,0.2), 4px 0 5px 0 rgba(228, 98, 23,0.14), 1px 0 10px 0 rgba(228, 98, 23,0.12);
+        bottom: 4.2rem;
+    }
+}

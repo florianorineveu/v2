@@ -1,5 +1,5 @@
 footer.footer {
-    padding: 0 2.5rem 2.5rem;
+    padding: 2.5rem;
 
     @include mono;
     font-size: 1.4rem;
@@ -20,6 +20,7 @@ footer.footer {
         align-items: center;
         padding: 0 2.5rem;
         list-style: none;
+        margin-top: 2rem;
 
         li {
             a {

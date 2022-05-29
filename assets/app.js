@@ -10,12 +10,43 @@ import './styles/app.scss';
 
 import $ from 'jquery';
 
-$('body').on('click', 'a', function (e) {
+$(function() {
+    $('.js-scrollToTop').on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        $('html, body').animate({scrollTop: 0}, 700)
+    });
+
+    let to = 'hello@fnev.eu';
+
+    $('.js-mailto').attr('href', 'mailto:' + to);
+});
+
+$(window).on('scroll', function() {
+    const $this = $(this);
+
+    if ($this.scrollTop() > 75 * $this.height() / 100) {
+        $('.js-scrollToTop').css('opacity', 1);
+    } else if ($this.scrollTop() < $this.height() / 2) {
+        $('.js-scrollToTop').css('opacity', 0);
+    }
+});
+
+$(document).on('click', 'a', function (e) {
     e.preventDefault();
     const $this  = $(this);
     const target = $this.attr('href');
 
+    console.log(target);
+
     if (target.charAt(0) !== '/') {
+        if (target.charAt(0) === '#' && target !== '#' && $(target).length >= 1) {
+            $('html, body').animate({
+                scrollTop: $(target).offset().top
+            }, 700)
+        }
+
         if ($this.attr('target') === '_blank') {
             window.open(target, '_blank');
         } else {
@@ -49,6 +80,7 @@ $('body').on('click', 'a', function (e) {
         success: function (response) {
             //console.log(data);
             setTimeout(function() {
+                $(window).scrollTop(0);
                 let title=(/<title>(.*?)<\/title>/m).exec(response)[1];
 
                 $('head title').text(title);
@@ -65,7 +97,9 @@ $('body').on('click', 'a', function (e) {
 });
 
 window.onpopstate = function(event) {
-    if(event && event.state) {
-        location.reload();
+    if (event && event.state) {
+        //if (!event.explicitOriginalTarget || event.explicitOriginalTarget !== window) {
+            location.reload();
+        //}
     }
 }
