@@ -16,8 +16,11 @@ jobs:
       mariadb:
         image: mariadb:latest
         ports:
-          - 3306
+          - 3306:3306
         env:
+          DB_DATABASE: test_db
+          DB_USER: root
+          DB_PASSWORD: root
           MYSQL_ROOT_PASSWORD: root
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
@@ -44,7 +47,7 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Create Database
       env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:3306/v2?serverVersion=mariadb-10.5.18&charset=utf8mb4
+        DATABASE_URL: mysql://root:root@127.0.0.1:3306/test_db?serverVersion=mariadb-10.5.18&charset=utf8mb4
       run: |
         bin/console d:d:c
         bin/console d:m:m --no-interaction
