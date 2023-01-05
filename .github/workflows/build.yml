@@ -1,0 +1,71 @@
+name: Symfony
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:latest
+        ports:
+          - 3306:3306
+        env:
+          DB_DATABASE: test_test
+          DB_USER: root
+          DB_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: root
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
+    # change this to (see https://github.com/shivammathur/setup-php#bookmark-versioning):
+    # uses: shivammathur/setup-php@v2
+    - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
+      with:
+        php-version: '8.1'
+
+    - uses: actions/checkout@v3
+    - name: Copy .env.test.local
+      run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Create Database
+      env:
+        DATABASE_URL: mysql://root:root@127.0.0.1:3306/test_test?serverVersion=mariadb-10.5.18&charset=utf8mb4
+      run: |
+        bin/console d:d:c
+        bin/console d:m:m --no-interaction
+
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+
+    - name: Run install
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install
+
+    - name: Build
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: build
+
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: bin/phpunit
