@@ -18,8 +18,8 @@ jobs:
         ports:
           - 3306
         env:
-          MYSQL_DATABASE: test
           MYSQL_ROOT_PASSWORD: root
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
