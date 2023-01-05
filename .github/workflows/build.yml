@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     services:
       mariadb:
@@ -67,9 +67,5 @@ jobs:
       with:
         cmd: build
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: bin/phpunit
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: bin/phpunit
