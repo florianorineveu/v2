@@ -1,3 +1,10 @@
+flash_message:
+  label:
+    error: "Oups !"
+    notice: "Information :"
+    success: "Eureka !"
+    warning: "Attention !"
+
 security:
   login:
     title: "Connexion"

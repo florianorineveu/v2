@@ -134,3 +134,14 @@ window.onpopstate = function(event) {
         location.reload();
     }
 }
+
+function update(e){
+    var x = e.clientX || e.touches[0].clientX
+    var y = e.clientY || e.touches[0].clientY
+
+    document.getElementsByClassName('hidden-background')[0].style.setProperty('--cursorX', x - e.target.offsetLeft + 'px')
+    document.getElementsByClassName('hidden-background')[0].style.setProperty('--cursorY', y - e.target.offsetTop + 'px')
+}
+
+$('.hidden-background').on('mousemove',update);
+$('.hidden-background').on('touchmove',update);

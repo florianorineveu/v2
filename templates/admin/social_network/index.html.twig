@@ -1,43 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}SocialNetwork index{% endblock %}
 
-{% block body %}
-    <h1>SocialNetwork index</h1>
+{% block content %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Réseaux sociaux</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <a href="{{ path('admin_social_network_new') }}" role="button" class="btn btn-sm btn-outline-secondary">
+                Ajouter
+            </a>
+        </div>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Title</th>
-                <th>Url</th>
-                <th>Enabled</th>
-                <th>Position</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for social_network in social_networks %}
-            <tr>
-                <td>{{ social_network.id }}</td>
-                <td>{{ social_network.name }}</td>
-                <td>{{ social_network.title }}</td>
-                <td>{{ social_network.url }}</td>
-                <td>{{ social_network.enabled ? 'Yes' : 'No' }}</td>
-                <td>{{ social_network.position }}</td>
-                <td>
-                    <a href="{{ path('app_admin_social_network_show', {'id': social_network.id}) }}">show</a>
-                    <a href="{{ path('app_admin_social_network_edit', {'id': social_network.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_social_network_new') }}">Create new</a>
-{% endblock %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Url</th>
+                    <th>Enabled</th>
+                    <th>Position</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for social_network in social_networks %}
+                <tr>
+                    <td>{{ social_network.id }}</td>
+                    <td>{{ social_network.name }}</td>
+                    <td>{{ social_network.title }}</td>
+                    <td>{{ social_network.url }}</td>
+                    <td>{{ social_network.enabled ? 'Yes' : 'No' }}</td>
+                    <td>{{ social_network.position }}</td>
+                    <td>
+                        <a href="{{ path('admin_social_network_show', {'id': social_network.id}) }}">show</a>
+                        <a href="{{ path('admin_social_network_edit', {'id': social_network.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

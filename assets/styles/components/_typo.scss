@@ -27,11 +27,24 @@ i {
 }
 
 .h2-like {
+    position: relative;
+
     align-items: center;
     display: flex;
 
     color: $color1;
     white-space: nowrap;
+
+    &:before {
+        left: -2rem;
+        position: absolute;
+        top: 2.7rem;
+
+        @include mono;
+        color: $color2;
+        content: '{';
+        font-size: 1.2rem;
+    }
 
     &:after {
         display: block;

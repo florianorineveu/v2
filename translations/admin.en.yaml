@@ -1,3 +1,10 @@
+flash_message:
+  label:
+    error: "Oops!"
+    notice: "Information:"
+    success: "Eureka!"
+    warning: "Warning!"
+
 security:
   login:
     title: "Login"

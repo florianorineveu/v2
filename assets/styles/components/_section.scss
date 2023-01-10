@@ -4,4 +4,14 @@
     /*overflow-x: hidden;
     overflow-y: auto;*/
     box-sizing: border-box;
+
+    &:after {
+        left: .5rem;
+        position: absolute;
+
+        @include mono;
+        color: $color2;
+        content: '}';
+        font-size: 1.2rem;
+    }
 }

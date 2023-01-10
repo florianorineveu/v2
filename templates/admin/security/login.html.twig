@@ -24,6 +24,8 @@
             {{ form_label(form._password) }}
         </div>
 
+        {{ form_errors(form) }}
+
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" name="{{ form._remember_me.vars.name }}">

@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}New SocialNetwork{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Create new SocialNetwork</h1>
 
     {{ include('admin/social_network/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_social_network_index') }}">back to list</a>
-{% endblock %}
+    <a href="{{ path('admin_social_network_index') }}">back to list</a>
+{% endblock content %}

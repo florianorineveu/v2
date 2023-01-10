@@ -1,0 +1,16 @@
+{% for label, messages in app.flashes %}
+    {% if label is same as ('error') %}
+        {% set label_class = 'danger' %}
+    {% elseif label is same as ('notice') %}
+        {% set label_class = 'warning' %}
+    {% else %}
+        {% set label_class = label %}
+    {% endif %}
+
+    {% for message in messages %}
+        <div class="alert alert-{{ label_class }} alert-dismissible fade show" role="alert">
+            <strong>{{ ('flash_message.label.' ~ label)|trans({}, 'admin') }}</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endfor %}
