@@ -4,8 +4,51 @@
     {{ 'security.login.title'|trans({}, 'admin') ~ ' - ' ~ parent() }}
 {%- endblock title %}
 
+{% block body_classes -%}
+    {{ parent() }} auth-page
+{%- endblock body_classes %}
+
 {% block content %}
-    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+    <div class="row full-height-vh m-0">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="card overflow-hidden">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row m-0">
+                            <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center p-3">
+                                <img src="{{ asset('assets/img/login.png') }}" alt="Image de connexion">
+                            </div>
+                            <div class="col-lg-6 col-12 px-4 py-3">
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                                Coucou <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#{% form_theme form 'bootstrap_5_layout.html.twig' %}
     {{ form_start(form, {'attr': {'class': 'form-signin text-center'}}) }}
         <div class="mb-3">
             <i class="bi bi-box2-heart-fill text-info" style="font-size: 40px;"></i>
@@ -42,5 +85,5 @@
         <br>
         <br>
         <small class="text-muted">&copy; {{ ''|date('Y') }} - Florian Neveu</small>
-    {{ form_end(form) }}
+    {{ form_end(form) }}#}
 {% endblock content %}

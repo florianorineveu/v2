@@ -1,0 +1,4 @@
+.full-height-vh {
+    height: 100vh !important;
+    height: calc(var(--vh, 1vh) * 100) !important;
+}
