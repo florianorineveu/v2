@@ -1,0 +1,94 @@
+{% extends 'admin/base_public.html.twig' %}
+
+{% block title %}Hello MediaController!{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Media</h1>
+
+    <h2>
+        {% if not root_folder %}
+            /
+        {% else %}
+            <a href="{{ path('app_admin_media_folder_index') }}">/</a>
+        {% endif %}
+        {% for folder in breadcrumb %}
+            >
+            {% if folder is same as root_folder %}
+                {{ folder.name }}
+            {% else %}
+                <a href="{{ path('app_admin_media_folder_index', {'slug': folder.slug}) }}">{{ folder.name }}</a>
+            {% endif %}
+        {% endfor %}
+    </h2>
+
+    <div class="text-right">
+
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Nouveau
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ path('app_admin_media_folder_new', {'slug': root_folder ? root_folder.slug : null}) }}">Dossier</a></li>
+                    <li><a class="dropdown-item" href="#">Fichier texte</a></li>
+                </ul>
+            </div>
+            <a href="{{ path('app_admin_media_file_upload', {'slug': root_folder ? root_folder.slug : null}) }}" type="button" class="btn btn-outline-primary">☁️ Téléverser</a>
+
+            {% if root_folder %}
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        ...
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ path('app_admin_media_folder_edit', {'id': root_folder.id}) }}">Éditer</a></li>
+                        <li>
+                            <form method="post" action="{{ path('app_admin_media_folder_delete', {'id': root_folder.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ root_folder.id) }}">
+                                <a href="javascript:" onclick="document.getElementById('jsDeleteFolder').click(); return false;" class="dropdown-item">Supprimer</a>
+                                <input type="submit" id="jsDeleteFolder" class="d-none">
+                            </form>
+
+                        </li>
+                        {#<li><a class="dropdown-item" href="{{ path('app_admin_media_folder_delete', {'id': root_folder.id}) }}">Supprimer</a></li>#}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <ul class="row list-unstyled">
+        {% if root_folder %}
+            <li class="col-md-2 text-center">
+                <a href="{{ path('app_admin_media_folder_index', {'slug': root_folder.parent ? root_folder.parent.slug : null}) }}" class="d-block">
+                    <img src="{{ asset('admin/icons/folder.svg') }}" alt="" height="70px">
+                </a>
+                ..
+            </li>
+        {% endif %}
+        {% for folder in folders %}
+            <li style="color: {{ folder.color }}" class="col-md-2 text-center">
+                <a href="{{ path('app_admin_media_folder_index', {'slug': folder.slug}) }}" class="d-block">
+                    <img src="{{ asset('admin/icons/folder.svg') }}" alt="" height="70px">
+                </a>
+                {{ folder.name }}
+            </li>
+        {% endfor %}
+        {% for file in files %}
+            <li class="col-md-2 text-center" style="overflow-wrap: break-word;">
+                <a href="#" class="d-block">
+                    {% if file.fileMimeType starts with 'image' %}
+                        <img src="{{ vich_uploader_asset(file, 'realFile') }}" alt="" height="70px">
+                    {% else %}
+                        <img src="{{ asset('admin/icons/file-60.svg') }}" alt="" height="70px">
+                    {% endif %}
+                </a>
+                {{ file.slug }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
