@@ -16,7 +16,7 @@
         bottom: 0;
         right: 100%;
         content: '';
-        background: $color1;
+        background: $color2;
         width: 0;
         z-index: -1;
 
@@ -24,7 +24,10 @@
     }
 
     &:hover, &:focus {
-        color: $color4;
+        border-color: $color2;
+
+        color: $color3;
+
         &:before {
             width: 100%;
         }

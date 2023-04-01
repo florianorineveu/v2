@@ -1,0 +1,25 @@
+.mobile-helper {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+
+  backdrop-filter: blur(16px);
+  background: rgba(12, 12, 12, .8) scroll;
+
+  border: 1px solid #444444;
+  border-radius: 1rem;
+
+  z-index: 9999;
+
+  ul {
+    float: left;
+    li {
+
+    }
+
+    + ul {
+      float: right;
+    }
+  }
+}

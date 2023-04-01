@@ -1,0 +1,21 @@
+body {
+  cursor: crosshair;
+
+  a {
+    cursor: inherit;
+  }
+
+  #cursorFollower {
+    position: absolute;
+    height: 30px;
+    width: 15px;
+    background-color: rgba(0, 0, 0, .75);
+    transform: translate(-100%, -100%);
+    animation: blinkTextCursor 1s steps(20) infinite normal;
+  }
+}
+
+@keyframes blinkTextCursor{
+  from { background-color: rgba(0,0,0,.75); }
+  to { background-color: transparent; }
+}

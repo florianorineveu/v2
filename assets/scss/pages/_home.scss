@@ -6,7 +6,7 @@
     -ms-flex-align: center;
     align-items: center;
 
-    &:before {
+    /*&:before {
         position: absolute;
         top: 6rem;
         left: .5rem;
@@ -15,7 +15,7 @@
         color: $color2;
         content: '<?php';
         font-size: 1.2rem;
-    }
+    }*/
 
     h1 {
         .monospace {
@@ -30,7 +30,7 @@
         strong {
             color: $color1;
 
-            &:after {
+            /*&:after {
                 position: absolute;
                 right: .5rem;
 
@@ -40,7 +40,7 @@
                 color: $color2;
                 content: 'extends AbstractDeveloper';
                 font-size: 1.2rem;
-            }
+            }*/
         }
     }
 }

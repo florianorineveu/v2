@@ -13,25 +13,17 @@
         <link rel="stylesheet" href="https://use.typekit.net/qex1spy.css">
     </head>
     <body>
-        <header class="header">
-            <a href="#" class="js-nav-toggler nav-toggler">
-                <span></span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    <li><a href="{{ path('app_about') }}">À propos</a></li>
-                </ul>
-            </nav>
-        </header>
+        {{ include('_header.html.twig') }}
 
         <main id="content">
             {% block body %}{% endblock %}
         </main>
 
+        {#{{ include('_mobile_helper.html.twig') }}#}
+
         {{ include('_footer.html.twig') }}
 
-        <a
+        {#<a
             href="#"
             class="js-scrollToTop scrollToTop"
             aria-label="Remonter en haut de la page"
@@ -39,7 +31,9 @@
             role="button"
         >
             &lt;?
-        </a>
+        </a>#}
+
+        <span id="cursorFollower"></span>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
