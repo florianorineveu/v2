@@ -18,7 +18,7 @@ header.header {
         &.scrollingTop {
             top: 0;
 
-            background: rgba(12,12,12,0.9);
+            background: rgba(244,244,244,0.9);
             box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12);
         }
     }
@@ -71,7 +71,7 @@ header.header {
         justify-content: center;
         width: min(75vw, 400px);
 
-        background: #101010;
+        background: $color3;
         box-shadow: none;
         transition: right .3s ease-in-out, box-shadow .3s ease-in-out;
 

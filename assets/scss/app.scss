@@ -5,8 +5,10 @@
 @import 'utils/mixins';
 
 @import 'components/button';
+@import 'components/cursor';
 @import 'components/footer';
 @import 'components/hamburger';
+@import 'components/mobileHelper';
 @import 'components/preloader';
 @import 'components/project';
 @import 'components/scrollToTop';
@@ -22,8 +24,8 @@ html {
 }
 
 body {
-    background-color: $color4;
-    color: $color3;
+    background-color: $color3;
+    color: $color1;
     font-size: 1.8rem;
     line-height: 2.5rem;
     @include default;

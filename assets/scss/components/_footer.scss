@@ -1,12 +1,12 @@
 footer.footer {
-    padding: 2.5rem;
+    padding: 2.5rem 2.5rem .5rem;
 
     @include mono;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     text-align: center;
 
     a {
-        color: $color3;
+        color: $color1;
         transition: color .2s ease-in-out;
 
         &:hover, &:focus {
@@ -47,6 +47,36 @@ footer.footer {
                 animation: animateHeart 1.2s infinite;
             }
         }
+    }
+
+    .indicator {
+        background-color: #1bbe8d;
+        border-radius: 50%;
+        display: inline-block;
+        height: 9px;
+        margin-right: 8px;
+        position: relative;
+        width: 9px;
+
+        &::before {
+            animation: ping-deb06942 2s cubic-bezier(0,0,.3,1) infinite;
+            background-color: #1bbe8d;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            height: 100%;
+            opacity: .5;
+            position: absolute;
+            width: 100%;
+        }
+    }
+}
+
+@keyframes ping-deb06942 {
+    80%,
+    to {
+        opacity:0;
+        transform:scale(3)
     }
 }
 
