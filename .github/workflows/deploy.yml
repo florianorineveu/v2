@@ -1,0 +1,24 @@
+name: Deployment
+
+concurrency: pré-production
+
+on:
+    push:
+        branches:
+        - main
+    merge:
+        branches:
+        - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: pré-production
+    steps:
+      - mkdir -p ~/.ssh
+      - ${{ secrets.SSH_KEY }} > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - ssh-keyscan -t rsa ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main && php8.2 /usr/local/bin/composer install && yarn install && yarn build && php8.2 bin/console doctrine:migrations:migrate --no-interaction"
+      - rm -rf ~/.ssh
+      - echo "Deployed!"
