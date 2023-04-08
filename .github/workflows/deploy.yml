@@ -17,9 +17,7 @@ jobs:
           mkdir -p ~/.ssh
           touch ~/.ssh/known_hosts
       - name: Add SSH key
-        run: cat >~/.ssh/id_rsa <<EOL
-          ${{ secrets.SSH_KEY }}
-          EOL
+        run: echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
       - name: Set permissions
         run: |
           chmod 600 ~/.ssh/id_rsa
