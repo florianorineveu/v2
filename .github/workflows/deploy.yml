@@ -1,6 +1,8 @@
 name: Deployment
 
-concurrency: pré-production
+concurrency:
+  group: pré-production
+  cancel-in-progress: true
 
 on:
     push:
@@ -19,14 +21,8 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
       - name: Deploy - Pull
-        run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main"
-      - name: Deploy - Composer
-        run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && php8.2 /usr/local/bin/composer install --no-interaction"
-      - name: Deploy - Update Database
-        run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && php8.2 bin/console doctrine:migrations:migrate --no-interaction"
-      - name: Deploy - Yarn
-        run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && yarn install && yarn build"
-      - name: Clear
+        run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main && /usr/bin/php8.2 /usr/local/bin/composer install --no-interaction && bin/console doctrine:migrations:migrate --no-interaction && yarn install && yarn build"
+      - name: Clean
         run: |
           rm -rf ~/.ssh
           echo "Deployed!"
