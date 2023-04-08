@@ -10,8 +10,6 @@ import './scss/app.scss';
 import './js/cursor';
 import $ from 'jquery';
 
-
-
 $(function() {
     $('.js-scrollToTop').on('click', function (e) {
         e.stopPropagation();
