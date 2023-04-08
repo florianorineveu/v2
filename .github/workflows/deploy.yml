@@ -18,8 +18,8 @@ jobs:
           touch ~/.ssh/known_hosts
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-      - name: Deploy - Pull
-        run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main"
+      #- name: Deploy - Pull
+      #  run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main"
       - name: Deploy - Composer
         run: sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && php8.2 /usr/local/bin/composer install --no-interaction"
       - name: Deploy - Update Database
