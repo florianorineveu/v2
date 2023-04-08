@@ -15,11 +15,17 @@ jobs:
       - name: Prepare SSH
         run: |
           mkdir -p ~/.ssh
-          "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          touch ~/.ssh/known_hosts
+      - name: Add SSH key
+        run: cat > ~/.ssh/id_rsa << EOF
+          ${{ secrets.SSH_KEY }}
+          EOF
+      - name: Set permissions
+        run: |
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy
         run: |
-          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main && php8.2 /usr/local/bin/composer install && yarn install && yarn build && php8.2 bin/console doctrine:migrations:migrate --no-interaction"
+          sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main && php8.2 /usr/local/bin/composer install && yarn install && yarn build && php8.2 bin/console doctrine:migrations:migrate --no-interaction"
           rm -rf ~/.ssh
           echo "Deployed!"
