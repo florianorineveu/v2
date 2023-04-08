@@ -21,7 +21,6 @@ class FileController extends AbstractController
 
     public function edit(FileRepository $fileRepository, File $file, Request $request)
     {
-
     }
 
     #[Route('/folder/file/upload/{slug}', name: 'file_upload', requirements: ['slug' => '.+?'], defaults: ['slug' => null])]

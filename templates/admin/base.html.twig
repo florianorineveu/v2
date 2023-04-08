@@ -13,19 +13,24 @@
 
     <title>{% block title %}{{ site_info.name }} | Io{% endblock %}</title>
 </head>
-<body class="{% block body_classes %}public{% endblock %}">
-<p></p>
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ label is not same as ('error') ?: 'danger' }} alert-dismissible fade show" role="alert">
-                <strong>{{ label|capitalize }} !</strong> {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<body class="{% block body_classes %}{% endblock %}">
+    {{ include('admin/_includes/_navbar.html.twig') }}
+
+    <div class="wrapper">
+        {{ include('admin/_includes/_sidebar.html.twig') }}
+
+        <div class="main-panel">
+            <div class="main-content">
+                <div class="content-wrapper">
+                    {% block content %}{% endblock %}
+                </div>
             </div>
-        {% endfor %}
-    {% endfor %}
-    {% block content %}{% endblock %}
+
+            {{ include('admin/_includes/_footer.html.twig') }}
+        </div>
+    </div>
+
+    {{ include('admin/_includes/_flash_messages.html.twig') }}
 
     {% block javascripts %}
         {{ encore_entry_script_tags('admin') }}
