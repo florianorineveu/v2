@@ -47,7 +47,7 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Create Database
       env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:3306/test_test?serverVersion=mariadb-10.5.18&charset=utf8mb4
+        DATABASE_URL: mysql://root:root@127.0.0.1:3306/test?serverVersion=mariadb-10.5.18&charset=utf8mb4
       run: |
         bin/console d:d:c
         bin/console d:m:m --no-interaction
