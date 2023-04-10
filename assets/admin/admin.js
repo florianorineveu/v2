@@ -1,5 +1,7 @@
 import './scss/admin.scss';
 
+const documentElement = document.documentElement;
+
 /**
  * Add class to body when scrolled
  */
@@ -20,8 +22,6 @@ window.addEventListener('scroll', function() {
 /**
  * Toggle fullscreen
  */
-const documentElement = document.documentElement;
-
 function openFullscreen() {
     if (documentElement.requestFullscreen) {
         documentElement.requestFullscreen();
@@ -79,4 +79,32 @@ document.addEventListener('click', function(e) {
     targetClassList.toggle('fa-toggle-off');
 
     document.cookie = 'io/menu/collapsed=' + bodyClassList.contains('menu-collapsed') + ';path=/io/;max-age=' + 60 * 60 * 24 * 14 + ';';
+});
+
+/**
+ * Simple Datatables
+ */
+import { DataTable, exportCSV } from 'simple-datatables';
+const dataTable = new DataTable('.dataTable', {
+    searchable: true,
+    sortable: true,
+    labels: {
+        placeholder: 'Search...',
+        perPage: 'entries per page',
+        noRows: 'No entries found',
+        info: 'Showing {start} to {end} of {rows} entries (Page {page} of {pages} pages)',
+    },
+    perPageSelect: [1, 2, 10, 25, 50, 100],
+    defaultPerPage: 10,
+    footer: true,
+});
+
+document.getElementById('exportCsv').addEventListener('click', () => {
+    exportCSV(dataTable, {
+        download: true,
+        lineDelimiter: '\n',
+        columnDelimiter: ';',
+        filename: 'social-networks',
+        bom: true,
+    });
 });
