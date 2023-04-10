@@ -78,7 +78,7 @@ document.addEventListener('click', function(e) {
     targetClassList.toggle('fa-toggle-on');
     targetClassList.toggle('fa-toggle-off');
 
-    document.cookie = 'io/menu/collapsed=' + bodyClassList.contains('menu-collapsed') + ';path=/io/;max-age=' + 60 * 60 * 24 * 14 + ';';
+    document.cookie = 'io/menu/collapsed=' + bodyClassList.contains('menu-collapsed') + ';path=/io/;max-age=' + 60 * 60 * 24 * 14 + ';SameSite=Lax;Secure=true';
 });
 
 /**

@@ -8,7 +8,7 @@
     <meta name="generator" content="Io by fnev.eu {{ lune.version }}" />
 
     {% block stylesheets %}
-        {{ encore_entry_link_tags('admin') }}
+        {{ encore_entry_link_tags('io/admin') }}
     {% endblock stylesheets %}
 
     <title>{% block title %}{{ site_info.name }} | Io{% endblock %}</title>
@@ -28,7 +28,7 @@
     {% block content %}{% endblock %}
 
     {% block javascripts %}
-        {{ encore_entry_script_tags('admin') }}
+        {{ encore_entry_script_tags('io/admin') }}
     {% endblock javascripts %}
 </body>
 </html>
