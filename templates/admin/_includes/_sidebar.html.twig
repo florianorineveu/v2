@@ -1,7 +1,10 @@
 <div class="io-sidebar">
-    <header>
-        <a href="{{ path('admin_dashboard_index') }}">
+    <header class="clearfix">
+        <a href="{{ path('admin_dashboard_index') }}" class="float-left">
             <strong>Io</strong> by fnev.eu
+        </a>
+        <a id="toggleSidebar" class="float-right" href="javascript:;">
+            <i class="{{ 'fa-solid fa-toggle-' ~ (isMenuCollapsed() ? 'off' : 'on') }}"></i>
         </a>
     </header>
 

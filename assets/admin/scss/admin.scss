@@ -1,3 +1,6 @@
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+
 * {
     box-sizing: border-box;
 }
@@ -8,7 +11,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
-    background-color: #fefefe
+    background-color: #FDFDFD;
 }
 
 .navbar {
@@ -50,6 +53,7 @@ body {
     height: 100vh;
     box-shadow: 6px 0px 20px 0 rgba(25, 42, 70, 0.35);
     z-index: 10;
+    transition: all 0.3s ease;
 
     header {
         height: 60px; //tmp
@@ -73,6 +77,7 @@ body {
     position: relative;
     margin-left: 250px;
     min-height: calc(100vh - 120px);
+    transition: all 0.3s ease;
 
     .content-wrapper {
         padding: 0 20px;
@@ -83,11 +88,34 @@ footer.footer {
     margin-left: 250px;
     text-align: center;
     line-height: 60px;
+    transition: all 0.3s ease;
 }
 
 .page-scrolled {
     .navbar {
-        background-color: #fff;
+        background-color: #FFFFFF;
         box-shadow: -8px 8px 14px 0 rgba(25, 42, 70, 0.11);
+    }
+}
+
+.menu-collapsed {
+    .navbar {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+
+    .main-content {
+        margin-left: 60px;
+    }
+
+    footer.footer {
+        margin-left: 60px;
+    }
+
+    .io-sidebar {
+        width: 60px;
+        &:hover {
+            width: 250px;
+        }
     }
 }

@@ -8,7 +8,7 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './scss/app.scss';
 import './js/cursor';
-import $ from 'jquery';
+/*
 
 $(function() {
     $('.js-scrollToTop').on('click', function (e) {
@@ -135,3 +135,4 @@ window.onpopstate = function(event) {
         location.reload();
     }
 }
+*/
