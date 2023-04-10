@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <div>
+        <ul>
+            <li>
+                <a id="toggleFullscreen" href="javascript:;">
+                    <i class="fa-solid fa-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>
+                <a href="#">
+                    Bonjour {{ app.user.firstname ?: app.user.email }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

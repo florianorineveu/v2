@@ -1,0 +1,65 @@
+<div class="io-sidebar">
+    <header class="clearfix">
+        <a href="{{ path('admin_dashboard_index') }}" class="float-left">
+            <strong>Io</strong> by fnev.eu
+        </a>
+        <a id="toggleSidebar" class="float-right" href="javascript:;">
+            <i class="{{ 'fa-solid fa-toggle-' ~ (isMenuCollapsed() ? 'off' : 'on') }}"></i>
+        </a>
+    </header>
+
+    <div class="io-sidebar-content">
+        <nav class="nav-container">
+            <ul class="main-navigation">
+                <li class="nav-item">
+                    <a href="{{ path('admin_dashboard_index') }}">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item has-sub">
+                    <a href="javascript:;">
+                        <i class="fa-solid fa-photo-film"></i>
+                        Médiathèque
+                    </a>
+                    <ul class="sub-nav">
+                        <li>
+                            <a href="{{ path('app_admin_media_folder_index') }}">Liste</a>
+                            <a href="{{ path('app_admin_media_file_upload') }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-title">
+                    Contenu
+                </li>
+                <li class="nav-item has-sub">
+                    <a href="javascript:;">
+                        <i class="fa-solid fa-share-from-square"></i>
+                        Réseaux sociaux
+                    </a>
+                    <ul class="sub-nav">
+                        <li>
+                            <a href="{{ path('app_admin_social_network_index') }}">Liste</a>
+                            <a href="{{ path('app_admin_social_network_new') }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-title">
+                    Administration
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fa-solid fa-users-gear"></i>
+                        Administrateurs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fa-solid fa-file-waveform"></i>
+                        Log
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-name: Deployment
+name: Continuous Deployment
 
 concurrency:
   group: pré-production

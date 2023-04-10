@@ -1,20 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}SocialNetwork index{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>SocialNetwork index</h1>
 
-    <table class="table">
+    <a href="javascript:;" id="exportCsv">Export CSV</a>
+
+    <table class="table dataTable">
         <thead>
             <tr>
-                <th>Id</th>
+                <th data-hidden="true" data-sortable="false" data-searchable="false">Id</th>
                 <th>Name</th>
-                <th>Title</th>
-                <th>Url</th>
+                <th data-sortable="false">Title</th>
+                <th data-sortable="false" data-searchable="false">Url</th>
                 <th>Enabled</th>
-                <th>Position</th>
-                <th>actions</th>
+                <th data-searchable="false">Position</th>
+                <th data-searchable="false">Created At</th>
+                <th data-sortable="false" data-searchable="false">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +29,7 @@
                 <td>{{ social_network.url }}</td>
                 <td>{{ social_network.enabled ? 'Yes' : 'No' }}</td>
                 <td>{{ social_network.position }}</td>
+                <td data-order="{{ social_network.createdAt|date('YmdHis') }}">{{ social_network.createdAt|date('d/m/y H:i') }}</td>
                 <td>
                     <a href="{{ path('app_admin_social_network_show', {'id': social_network.id}) }}">show</a>
                     <a href="{{ path('app_admin_social_network_edit', {'id': social_network.id}) }}">edit</a>
