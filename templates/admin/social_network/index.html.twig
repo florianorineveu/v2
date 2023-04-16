@@ -3,45 +3,72 @@
 {% block title %}SocialNetwork index{% endblock %}
 
 {% block content %}
-    <h1>SocialNetwork index</h1>
+    <h1>Réseaux sociaux</h1>
 
-    <a href="javascript:;" id="exportCsv">Export CSV</a>
+    <section class="card">
+        <header class="card-header">
+            <h2 class="card-title">Liste des réseaux sociaux</h2>
+        </header>
 
-    <table class="table dataTable">
-        <thead>
-            <tr>
-                <th data-hidden="true" data-sortable="false" data-searchable="false">Id</th>
-                <th>Name</th>
-                <th data-sortable="false">Title</th>
-                <th data-sortable="false" data-searchable="false">Url</th>
-                <th>Enabled</th>
-                <th data-searchable="false">Position</th>
-                <th data-searchable="false">Created At</th>
-                <th data-sortable="false" data-searchable="false">actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for social_network in social_networks %}
-            <tr>
-                <td>{{ social_network.id }}</td>
-                <td>{{ social_network.name }}</td>
-                <td>{{ social_network.title }}</td>
-                <td>{{ social_network.url }}</td>
-                <td>{{ social_network.enabled ? 'Yes' : 'No' }}</td>
-                <td>{{ social_network.position }}</td>
-                <td data-order="{{ social_network.createdAt|date('YmdHis') }}">{{ social_network.createdAt|date('d/m/y H:i') }}</td>
-                <td>
-                    <a href="{{ path('app_admin_social_network_show', {'id': social_network.id}) }}">show</a>
-                    <a href="{{ path('app_admin_social_network_edit', {'id': social_network.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-stripped table-bordered dataTable">
+                        <thead>
+                            <tr>
+                                <th data-hidden="true" data-sortable="false" data-searchable="false">Id</th>
+                                <th>Name</th>
+                                <th data-sortable="false">Title</th>
+                                <th data-sortable="false" data-searchable="false">Url</th>
+                                <th>Enabled</th>
+                                <th data-searchable="false">Position</th>
+                                <th data-searchable="false">Created At</th>
+                                <th data-sortable="false" data-searchable="false">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for social_network in social_networks %}
+                                <tr>
+                                    <td>{{ social_network.id }}</td>
+                                    <td>{{ social_network.name }}</td>
+                                    <td>{{ social_network.title }}</td>
+                                    <td>{{ social_network.url }}</td>
+                                    <td>{{ social_network.enabled ? 'Yes' : 'No' }}</td>
+                                    <td>{{ social_network.position }}</td>
+                                    <td data-order="{{ social_network.createdAt|date('YmdHis') }}">{{ social_network.createdAt|date('d/m/y H:i') }}</td>
+                                    <td>
+                                        <a href="{{ path('app_admin_social_network_show', {'id': social_network.id}) }}">show</a>
+                                        <a href="{{ path('app_admin_social_network_edit', {'id': social_network.id}) }}">edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="8">no records found</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    <a href="{{ path('app_admin_social_network_new') }}">Create new</a>
+        <footer class="card-footer">
+            <a href="javascript:;" id="exportCsv">Export CSV</a>
+
+            <a href="{{ path('app_admin_social_network_new') }}">Create new</a>
+        </footer>
+    </section>
+
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <a class="btn btn-primary" href="javascript:;" id="exportCsv">Export CSV</a>
+
+                <a class="btn btn-primary btn-outline" href="{{ path('app_admin_social_network_new') }}">Create new</a>
+
+                <a class="btn btn-primary btn-round" href="{{ path('app_admin_social_network_new') }}">Create new</a>
+                <a class="btn btn-primary btn-outline btn-round" href="{{ path('app_admin_social_network_new') }}">Create new</a>
+            </div>
+        </div>
+    </section>
 {% endblock %}

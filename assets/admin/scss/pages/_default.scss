@@ -1,0 +1,35 @@
+body {
+    background-color: #F9F9F9;
+}
+
+.wrapper {
+    position: relative;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    min-height: calc(100vh - 60px);
+}
+
+.main-panel {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    margin-top: 60px;
+}
+
+.main-content {
+    position: relative;
+    margin-left: 250px;
+    min-height: calc(100vh - 120px);
+    transition: all 0.3s ease;
+
+    .content-wrapper {
+        padding: 0 3rem;
+    }
+}
+
+.menu-collapsed {
+    .main-content {
+        margin-left: 60px;
+    }
+}

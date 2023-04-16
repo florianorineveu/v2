@@ -1,0 +1,140 @@
+.table {
+    border-collapse: separate;
+    min-width: 100%;
+    max-width: none !important;
+
+    th, td {
+        padding: 1rem 2rem;
+
+        vertical-align: top;
+    }
+
+    thead {
+        tr {
+            th {
+                vertical-align: bottom;
+
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    thead, tfoot {
+        tr {
+            th {
+                white-space: nowrap;
+
+                &[data-sortable="true"] {
+                    padding: 0;
+
+                    > a {
+                        position: relative;
+
+                        padding: 1rem 3rem 1rem 2rem;
+                        display: block;
+
+                        &::before, &::after {
+                            position: absolute;
+                            right: 1rem;
+                            font-family: "Font Awesome 6 Free";
+                            font-weight: 900;
+                            font-size: .7rem;
+                            display: block;
+                            opacity: .3;
+                        }
+
+                        &::before {
+                            content: "\f106";
+                            top: .9rem;
+                        }
+
+                        &::after {
+                            content: "\f107";
+                            bottom: .9rem;
+                        }
+                    }
+
+                    &.datatable-ascending {
+                        > a {
+                            &::before {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    &.datatable-descending {
+                        > a {
+                            &::after {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-bordered {
+        border: 1px solid rgba(0, 0, 0, .2);
+
+        th, td {
+            border: 1px solid #E0E0E0;
+            border-left: none;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        thead {
+            tr {
+                th {
+                    border-bottom: 2px solid #E0E0E0;
+                }
+            }
+        }
+
+        tbody {
+            th, td {
+                border-bottom: none;
+                border-top: none;
+            }
+        }
+
+        tfoot {
+            tr {
+                th {
+                    border-top: 2px solid #E0E0E0;
+                }
+            }
+        }
+    }
+
+    &-stripped {
+        tbody {
+            tr {
+                &:nth-child(odd) {
+                    background-color: rgba(0, 0, 0, .03);
+                }
+            }
+        }
+    }
+
+    &-hover {
+        tbody {
+            tr {
+                &:hover {
+                    background-color: rgba(0, 0, 0, .07);
+                }
+            }
+        }
+    }
+}
+
+.table-responsive {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+}

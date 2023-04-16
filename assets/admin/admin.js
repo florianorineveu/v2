@@ -94,9 +94,10 @@ const dataTable = new DataTable('.dataTable', {
         noRows: 'No entries found',
         info: 'Showing {start} to {end} of {rows} entries (Page {page} of {pages} pages)',
     },
-    perPageSelect: [1, 2, 10, 25, 50, 100],
+    perPageSelect: [10, 25, 50, 100],
     defaultPerPage: 10,
     footer: true,
+    fixedColumns: false,
 });
 
 document.getElementById('exportCsv').addEventListener('click', () => {

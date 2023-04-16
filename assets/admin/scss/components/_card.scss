@@ -1,0 +1,28 @@
+.card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    min-width: 0;
+
+    background: #FFFFFF;
+    border-radius: .35rem;
+    box-shadow: 0 8px 14px 0 rgba(25, 42, 70, 0.11);
+
+    &-header {
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    &-content {
+
+    }
+
+    &-body {
+        padding: 1.5rem;
+    }
+
+    &-footer {
+        padding: 0 1.5rem 1.5rem;
+    }
+}
